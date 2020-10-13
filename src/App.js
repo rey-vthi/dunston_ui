@@ -1,26 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Assembly from './components/Assembly';
+import Machine from '@craftybones/assembly_simulator';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = function () {
+  return <Assembly machine={new Machine(100000)} />;
+};
 
 export default App;
