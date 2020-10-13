@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const TextArea = styled.textarea`
-  width: 30vw;
-  height: 60vh;
+  width: 30%;
+  height: 100%;
 `;
 
 const Editor = function ({updateProgram}) {

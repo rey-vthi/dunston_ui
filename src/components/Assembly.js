@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
-import Editor from './Editor';
-import ResultBox from './ResultBox';
 import Buttons from './Buttons';
+import Panel from './Panel';
 
 const Assembly = function ({machine}) {
   const [result, setResult] = useState([]);
@@ -15,9 +14,8 @@ const Assembly = function ({machine}) {
 
   return (
     <div>
-      <Editor updateProgram={setProgram} />
+      <Panel result={result} setProgram={setProgram}/>
       <Buttons executor={execute} />
-      <ResultBox result={result} />
     </div>
   );
 };
