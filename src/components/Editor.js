@@ -1,12 +1,12 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const TextArea = styled.textarea`
-  width: 30%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
 `;
 
-const Editor = function ({updateProgram}) {
+const Editor = function ({ updateProgram }) {
   const [text, setText] = useState('');
 
   const updateText = function (event) {

@@ -1,18 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
-import Editor from './Editor';
+import ProgramExecutor from './ProgramExecutor';
 import ResultBox from './ResultBox';
 
 const StyledPanel = styled.div`
   display: flex;
   justify-content: space-evenly;
   height: 40vh;
+
+  & div {
+    width: 50%;
+    height: 100%;
+  }
 `;
 
-const Panel = function ({ result, setProgram }) {
+const Panel = function ({ result, ...rest }) {
   return (
     <StyledPanel>
-      <Editor updateProgram={setProgram} />
+      <ProgramExecutor {...rest} />
       <ResultBox result={result} />
     </StyledPanel>
   );
