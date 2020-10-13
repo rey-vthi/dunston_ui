@@ -1,21 +1,23 @@
 import React, {useState} from 'react';
 import Editor from './Editor';
+import ResultBox from './ResultBox';
+import Buttons from './Buttons';
 
-const Assembly = function ({ machine }) {
-  const [result, setResult] = useState('');
+const Assembly = function ({machine}) {
+  const [result, setResult] = useState([]);
   const [program, setProgram] = useState('');
 
   const execute = function () {
     machine.load(program);
     machine.execute();
-    setResult(machine.getPrn().join('\n'));
+    setResult(machine.getPrn());
   };
 
   return (
     <div>
       <Editor updateProgram={setProgram} />
-      <button onClick={execute}>Run</button>
-      <div>{result}</div>
+      <Buttons executor={execute} />
+      <ResultBox result={result} />
     </div>
   );
 };
