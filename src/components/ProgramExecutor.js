@@ -2,11 +2,11 @@ import React from 'react';
 import Editor from './Editor';
 import Buttons from './Buttons';
 
-const ProgramExecutor = function ({ setProgram, ...rest }) {
+const ProgramExecutor = function (props) {
   return (
     <div>
-      <Editor updateProgram={setProgram} />
-      <Buttons {...rest} />
+      <Editor {...props} />
+      <Buttons {...props} />
     </div>
   );
 };

@@ -1,43 +1,31 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Panel from './Panel';
 import History from './History';
 
-const Assembly = function ({machine}) {
+import Machine from '../MachineContext';
+
+const Assembly = function ({ machine }) {
   const [program, setProgram] = useState('');
   const [result, setResult] = useState([]);
   const [table, setTable] = useState([]);
   const [stack, setStack] = useState([]);
 
-  const fetchProgramState = function () {
+  const updateState = function () {
     setResult(machine.getPrn());
     setTable(machine.getTable().slice());
     setStack(machine.getStack().slice());
   };
 
-  const execute = function () {
-    machine.load(program);
-    machine.execute();
-    fetchProgramState();
-  };
-
-  const stepInto = function () {
-    machine.load(program);
-    machine.executeStepWise(fetchProgramState);
-  };
-
-  const next = function () {
-    machine.nextStep();
-  };
-
   return (
     <div>
-      <Panel
-        result={result}
-        setProgram={setProgram}
-        executor={execute}
-        stepInto={stepInto}
-        next={next}
-      />
+      <Machine.Provider value={machine}>
+        <Panel
+          result={result}
+          program={program}
+          setProgram={setProgram}
+          updateState={updateState}
+        />
+      </Machine.Provider>
       <History table={table} stack={stack} />
     </div>
   );
