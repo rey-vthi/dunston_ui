@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from './Header';
 import Panel from './Panel';
 import History from './History';
 
@@ -18,6 +19,7 @@ const Assembly = function ({ machine }) {
 
   return (
     <div>
+      <Header program={program} />
       <Machine.Provider value={machine}>
         <Panel
           result={result}
