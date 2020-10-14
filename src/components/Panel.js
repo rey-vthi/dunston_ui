@@ -6,9 +6,9 @@ import ResultBox from './ResultBox';
 const StyledPanel = styled.div`
   display: flex;
   justify-content: space-evenly;
-  height: 40vh;
+  height: 60vh;
 
-  & div {
+  & > div {
     width: 50%;
     height: 100%;
   }
