@@ -5,9 +5,10 @@ import Stack from './Stack';
 
 const HistoryBox = styled.div`
   display: flex;
+  height: 400px;
 `;
 
-const History = function ({table, stack}) {
+const History = function ({ table, stack }) {
   return (
     <HistoryBox>
       <TraceTable table={table} />
