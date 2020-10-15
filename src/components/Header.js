@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import NavBar from './NavBar';
 
 const StyledHeader = styled.div`
   padding: 10px;
@@ -11,32 +12,11 @@ const Title = styled.div`
   font-size: 20px;
 `;
 
-const NavBar = styled.div`
-  display: flex;
-`;
-
-const Button = styled.a`
-  border:1px solid black;
-  padding:5px;
-  text-decoration:none;
-  color:black;
-`
-
-const Save = function ({ program }) {
-  return (
-    <Button href={`data:text/plain,${program}`} download="program.dtn">
-      Save
-    </Button>
-  );
-};
-
-const Header = function ({ program }) {
+const Header = function (props) {
   return (
     <StyledHeader>
       <Title>Assembly simulator</Title>
-      <NavBar>
-        <Save program={program} />
-      </NavBar>
+      <NavBar {...props} />
     </StyledHeader>
   );
 };
