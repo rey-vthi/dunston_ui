@@ -32,3 +32,4 @@ rm -rf ${FRONTEND}
 rm -rf ${BACKEND}
 
 echo 'Process completed...'
+
