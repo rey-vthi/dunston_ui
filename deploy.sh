@@ -2,7 +2,7 @@
 rm -rf * .*
 
 echo 'Cloning backend...'
-git clone  https://github.com/${USER_NAME}/${BACKEND}.git 2> /dev/null
+git clone  https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${USER_NAME}/${BACKEND}.git 2> /dev/null
 cd ${BACKEND}
 
 echo 'Installing dependencies...'
@@ -11,7 +11,7 @@ npm test
 cd ..
 
 echo 'Cloning frontend ...'
-git clone https://github.com/${USER_NAME}/${FRONTEND}.git 2> /dev/null
+git clone https://${GITHUB_TOKEN}:x-oauth-basic@github.com/${USER_NAME}/${FRONTEND}.git 2> /dev/null
 cd ${FRONTEND}
 
 echo 'Installing dependencies...'
