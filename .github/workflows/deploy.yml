@@ -1,0 +1,26 @@
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: merging frontend and backend
+        env:
+          USER_NAME: rey-vthi
+          BACKEND: dunston
+          FRONTEND: dunston_ui
+        run: ./deploy.sh
+
+      - name: Deploy
+        run: |
+          git remote add heroku https://heroku:${{secrets.HEROKU_API_KEY}}@git.heroku.com/${{secrets.HEROKU_APP_NAME}}.git
+          git add .
+          git commit -m "deploying"
+          git push heroku master --set-upstream -f;
