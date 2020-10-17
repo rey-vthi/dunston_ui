@@ -16,6 +16,7 @@ const reducer = function (state, action) {
     case 'editProgram':
       return {...state, program: action.program};
     case 'loadProgram':
+      console.log('---------------------', action.program);
       return {...initial(), program: action.program};
     case 'runProgram':
       machine.load(program);

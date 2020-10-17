@@ -22,6 +22,7 @@ const Load = function ({dispatch}) {
       };
       fileReader.readAsText(files[0]);
     }
+    event.target.value = '';
   };
 
   return (
@@ -32,6 +33,7 @@ const Load = function ({dispatch}) {
         type="file"
         accept=".dtn"
         onChange={showContent}
+        onDurationChange={showContent}
         style={{display: 'none'}}
       />
     </Button>
