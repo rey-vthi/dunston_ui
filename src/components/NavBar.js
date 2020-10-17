@@ -51,6 +51,7 @@ const Save = function ({program}) {
 const NavBar = function ({state, dispatch}) {
   return (
     <StyledNavBar>
+      <Button href={process.env.REACT_APP_LOGIN}>Login</Button>
       <Save program={state.program} />
       <Load dispatch={dispatch} />
     </StyledNavBar>
