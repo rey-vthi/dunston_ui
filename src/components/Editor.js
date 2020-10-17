@@ -6,13 +6,12 @@ const TextArea = styled.textarea`
   height: 90%;
 `;
 
-const Editor = function ({ setProgram, program }) {
-
+const Editor = function ({state, dispatch}) {
   const updateText = function (event) {
-    setProgram(event.target.value);
+    dispatch({type: 'editProgram', program: event.target.value});
   };
 
-  return <TextArea onChange={updateText} value={program} />;
+  return <TextArea onChange={updateText} value={state.program} />;
 };
 
 export default Editor;

@@ -12,13 +12,13 @@ const Button = styled.a`
   color: black;
 `;
 
-const Load = function ({initialize}) {
+const Load = function ({dispatch}) {
   const showContent = function (event) {
     const files = event.target.files;
     if (files && files[0]) {
       const fileReader = new FileReader();
       fileReader.onload = (e) => {
-        initialize(e.target.result);
+        dispatch({type: 'loadProgram', program: e.target.result});
       };
       fileReader.readAsText(files[0]);
     }
@@ -46,11 +46,11 @@ const Save = function ({program}) {
   );
 };
 
-const NavBar = function ({initialize, program}) {
+const NavBar = function ({state, dispatch}) {
   return (
     <StyledNavBar>
-      <Save program={program} />
-      <Load initialize={initialize} />
+      <Save program={state.program} />
+      <Load dispatch={dispatch} />
     </StyledNavBar>
   );
 };

@@ -14,11 +14,11 @@ const StyledPanel = styled.div`
   }
 `;
 
-const Panel = function ({ result, ...rest }) {
+const Panel = function ({state, dispatch}) {
   return (
     <StyledPanel>
-      <ProgramExecutor {...rest} />
-      <ResultBox result={result} />
+      <ProgramExecutor state={state} dispatch={dispatch} />
+      <ResultBox result={state.result} />
     </StyledPanel>
   );
 };

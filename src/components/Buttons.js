@@ -1,7 +1,5 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-
-import Machine from '../MachineContext';
 
 const StyledButtons = styled.div`
   display: flex;
@@ -10,38 +8,23 @@ const StyledButtons = styled.div`
 `;
 
 const Button = styled.div`
-  width:30%;
-  font-size:20px;
-  font-weight:300;
-  border:1px solid black;
-  border-radius:2px;
-  padding:5px;
-  text-align:center;
+  width: 30%;
+  font-size: 20px;
+  font-weight: 300;
+  border: 1px solid black;
+  border-radius: 2px;
+  padding: 5px;
+  text-align: center;
 `;
 
-const Buttons = function ({ program, updateState }) {
-  const machine = useContext(Machine);
-
-  const executor = function () {
-    machine.load(program);
-    machine.execute();
-    updateState();
-  };
-
-  const stepInto = function () {
-    machine.load(program);
-    machine.executeStepWise(updateState);
-  };
-
-  const next = function () {
-    machine.nextStep();
-  };
-
+const Buttons = function ({dispatch}) {
   return (
     <StyledButtons>
-      <Button onClick={executor}>Run</Button>
-      <Button onClick={stepInto}>Step Into</Button>
-      <Button onClick={next}>Next</Button>
+      <Button onClick={() => dispatch({type: 'runProgram'})}>Run</Button>
+      <Button onClick={() => dispatch({type: 'stepIntoProgram'})}>
+        Step Into
+      </Button>
+      <Button onClick={() => dispatch({type: 'executeNextLine'})}>Next</Button>
     </StyledButtons>
   );
 };
