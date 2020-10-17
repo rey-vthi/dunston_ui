@@ -11,23 +11,24 @@ const initial = function () {
 };
 
 const reducer = function (state, action) {
+  const {machine, program} = state;
   switch (action.type) {
     case 'editProgram':
       return {...state, program: action.program};
     case 'loadProgram':
       return {...initial(), program: action.program};
     case 'runProgram':
-      state.machine.load(state.program);
-      state.machine.execute();
+      machine.load(program);
+      machine.execute();
       return {
         ...state,
-        table: state.machine.getTable(),
-        stack: state.machine.getStack(),
-        result: state.machine.getPrn(),
+        table: machine.getTable(),
+        stack: machine.getStack(),
+        result: machine.getPrn(),
       };
     case 'stepIntoProgram':
-      state.machine.load(state.program);
-      state.machine.executeStepWise(() => {});
+      machine.load(program);
+      machine.executeStepWise(() => {});
       return {
         ...state,
         table: [],
@@ -35,13 +36,15 @@ const reducer = function (state, action) {
         stack: [],
       };
     case 'executeNextLine':
-      state.machine.nextStep();
+      machine.nextStep();
       return {
         ...state,
-        table: state.machine.getTable(),
-        stack: state.machine.getStack(),
-        result: state.machine.getPrn(),
+        table: machine.getTable(),
+        stack: machine.getStack(),
+        result: machine.getPrn(),
       };
+    default:
+      throw new Error();
   }
 };
 
